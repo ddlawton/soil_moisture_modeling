@@ -47,15 +47,6 @@ block_trt <- ggplot(dat_2020,aes(x=Date,y=TWS)) + geom_smooth(method = "gam", fo
 
 
 
-mod_2020_irr <- bam(TWS ~ s(Date_numeric,by=Trt,bs="tp",k=500) + s(Block,bs="re"),select=TRUE,data=dat_2020,discrete = TRUE,nthreads = 10)
-
-mod_fs_2020_irr_Gamma <- bam(TWS ~ s(Date_numeric,Trt,bs="fs",k=500) + s(Blockbs="re"),select=TRUE,data=dat_2020,discrete = TRUE,nthreads = 10,family=Gamma())
-mod_fs_2020_irr_scat <- bam(TWS ~ s(Date_numeric,Trt,bs="fs",k=500) + s(Block,Trt,bs="re"),select=TRUE,data=dat_2020,discrete = TRUE,nthreads = 10,family=scat())
-
-
-mod_fs_2020_irr_gauss <- bam(TWS ~ s(Date_numeric,Trt,bs="fs",k=500),
-                             select=TRUE,data=dat_2020,discrete = TRUE,nthreads = 10,family=gaussian(link="log"))
-
 mod_by_2020_irr_gauss <- bam(TWS ~ te(Date_numeric,by=Trt,bs="tp",k=500) +
                                te(Date_numeric,by=Block,bs="tp",k=250)+
                                te(MOD,by=Trt,bs="tp",k=100) +
@@ -63,8 +54,8 @@ mod_by_2020_irr_gauss <- bam(TWS ~ te(Date_numeric,by=Trt,bs="tp",k=500) +
                              select=TRUE,data=dat_2020,discrete = TRUE,nthreads = 23)
 
 
-mod_fs_2020_irr_gauss <- bam(TWS ~ te(Date_numeric,Trt,bs="fs",k=500) +
-                               te(Date_numeric,Block,bs="fs",k=250)+
+mod_fs_2020_irr_gauss <- bam(TWS ~ te(Date_numeric,Trt,bs="fs",m=1,k=500) +
+                               te(Date_numeric,Block,bs="fs",m=1,k=250)+
                                te(MOD,Trt,bs="fs",k=100) +
                                te(MOD,Block,bs="fs",k=100),
                              select=TRUE,data=dat_2020,discrete = TRUE,nthreads = 23)
@@ -72,13 +63,13 @@ mod_fs_2020_irr_gauss <- bam(TWS ~ te(Date_numeric,Trt,bs="fs",k=500) +
 
 
 
-AIC(mod_by_2020_dry_gauss,mod_fs_2020_dry_gauss)
-BIC(mod_by_2020_dry_gauss,mod_fs_2020_dry_gauss)
+AIC(mod_by_2020_irr_gauss,mod_fs_2020_irr_gauss)
+BIC(mod_by_2020_irr_gauss,mod_fs_2020_irr_gauss)
 
 
-summary(mod_fs_2020_dry_gauss)
-k.check(mod_fs_2020_dry_gauss)
-concurvity(mod_fs_2020_dry_gauss)
+summary(mod_fs_2020_irr_gauss)
+k.check(mod_fs_2020_irr_gauss)
+concurvity(mod_fs_2020_irr_gauss)
 
 
 simresid <- simulateResiduals(mod_fs_2020_dry_gauss)
@@ -89,7 +80,7 @@ draw(mod_fs_2020_irr_gauss)
 
 b0 <- coef(mod_fs_2020_irr_gauss)[1]
 
-test <- gratia::smooth_estimates(mod_fs_2020_dry_gauss)
+test <- gratia::smooth_estimates(mod_fs_2020_irr_gauss)
 
 test$adj_est <- test$est + b0
 
@@ -146,17 +137,6 @@ block_trt <- ggplot(dat_2021_irr,aes(x=Date,y=TWS)) + geom_smooth(method = "gam"
 
 
 
-
-
-mod_2021_irr <- bam(TWS ~ s(Date_numeric,by=Trt,bs="tp",k=500) + s(Block,bs="re"),select=TRUE,data=dat_2021_irr,discrete = TRUE,nthreads = 10)
-
-mod_fs_2021_irr_Gamma <- bam(TWS ~ s(Date_numeric,Trt,bs="fs",k=500) + s(Blockbs="re"),select=TRUE,data=dat_2021_irr,discrete = TRUE,nthreads = 10,family=Gamma())
-mod_fs_2021_irr_scat <- bam(TWS ~ s(Date_numeric,Trt,bs="fs",k=500) + s(Block,Trt,bs="re"),select=TRUE,data=dat_2021_irr,discrete = TRUE,nthreads = 10,family=scat())
-
-
-mod_fs_2021_irr_gauss <- bam(TWS ~ s(Date_numeric,Trt,bs="fs",k=500),
-                             select=TRUE,data=dat_2021_irr,discrete = TRUE,nthreads = 10,family=gaussian(link="log"))
-
 mod_by_2021_irr_gauss <- bam(TWS ~ te(Date_numeric,by=Trt,bs="tp",k=500) +
                                te(Date_numeric,by=Block,bs="tp",k=250)+
                                te(MOD,by=Trt,bs="tp",k=100) +
@@ -164,8 +144,8 @@ mod_by_2021_irr_gauss <- bam(TWS ~ te(Date_numeric,by=Trt,bs="tp",k=500) +
                              select=TRUE,data=dat_2021_irr,discrete = TRUE,nthreads = 23)
 
 
-mod_fs_2021_irr_gauss <- bam(TWS ~ te(Date_numeric,Trt,bs="fs",k=500) +
-                               te(Date_numeric,Block,bs="fs",k=250)+
+mod_fs_2021_irr_gauss <- bam(TWS ~ te(Date_numeric,Trt,bs="fs",m=1,k=500) +
+                               te(Date_numeric,Block,bs="fs",m=1,k=250)+
                                te(MOD,Trt,bs="fs",k=100) +
                                te(MOD,Block,bs="fs",k=100),
                              select=TRUE,data=dat_2021_irr,discrete = TRUE,nthreads = 23)
@@ -251,16 +231,6 @@ block_trt <- ggplot(dat_2021_dry,aes(x=Date,y=TWS)) + geom_smooth(method = "gam"
 
 
 
-
-mod_2021_irr <- bam(TWS ~ s(Date_numeric,by=Trt,bs="tp",k=500) + s(Block,bs="re"),select=TRUE,data=dat_2021_dry,discrete = TRUE,nthreads = 10)
-
-mod_fs_2021_irr_Gamma <- bam(TWS ~ s(Date_numeric,Trt,bs="fs",k=500) + s(Blockbs="re"),select=TRUE,data=dat_2021_dry,discrete = TRUE,nthreads = 10,family=Gamma())
-mod_fs_2021_irr_scat <- bam(TWS ~ s(Date_numeric,Trt,bs="fs",k=500) + s(Block,Trt,bs="re"),select=TRUE,data=dat_2021_dry,discrete = TRUE,nthreads = 10,family=scat())
-
-
-mod_fs_2021_irr_gauss <- bam(TWS ~ s(Date_numeric,Trt,bs="fs",k=500),
-                             select=TRUE,data=dat_2021_dry,discrete = TRUE,nthreads = 10,family=gaussian(link="log"))
-
 mod_by_2021_dry_gauss <- bam(TWS ~ te(Date_numeric,by=Trt,bs="tp",k=500) +
                                te(Date_numeric,by=Block,bs="tp",k=250)+
                                te(MOD,by=Trt,bs="tp",k=100) +
@@ -268,8 +238,8 @@ mod_by_2021_dry_gauss <- bam(TWS ~ te(Date_numeric,by=Trt,bs="tp",k=500) +
                              select=TRUE,data=dat_2021_dry,discrete = TRUE,nthreads = 23)
 
 
-mod_fs_2021_dry_gauss <- bam(TWS ~ te(Date_numeric,Trt,bs="fs",k=500) +
-                               te(Date_numeric,Block,bs="fs",k=250)+
+mod_fs_2021_dry_gauss <- bam(TWS ~ te(Date_numeric,Trt,bs="fs",m=1,k=500) +
+                               te(Date_numeric,Block,bs="fs",m=1,k=250)+
                                te(MOD,Trt,bs="fs",k=100) +
                                te(MOD,Block,bs="fs",k=100),
                              select=TRUE,data=dat_2021_dry,discrete = TRUE,nthreads = 23)
