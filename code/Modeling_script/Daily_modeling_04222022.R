@@ -101,8 +101,8 @@ m3 <- gamm(mean ~
              te(DOY,Block,bs="fs",m=2,k=50),
            data=dat_2021_dry, correlation = corCAR1(value = 0.6,form = ~ DOY|block_trt),
            control = ctrl)
-acf(resid(m2$lme,type='normalized'))
-pacf(resid(m2$lme,type='normalized'))
+acf(resid(m3$lme,type='normalized'))
+pacf(resid(m3$lme,type='normalized'))
 
 
 
@@ -118,9 +118,9 @@ BIC(m3$lme,m0$lme, m1$lme, m2$lme) %>%
   mutate(delta = BIC - min(BIC)) %>%
   arrange(delta)
 
-appraise(m1$gam)
-summary(m1$gam)
-k.check(m1$gam) #Making sure that there are enough knots to capture all the wiggles (yes that the official term)
+appraise(m2$gam)
+summary(m2$gam)
+k.check(m2$gam) #Making sure that there are enough knots to capture all the wiggles (yes that the official term)
 
 
 #Now plotting to see results
@@ -131,9 +131,9 @@ results_m0 <- gratia::smooth_estimates(m0)
 results_m0$adj_est <- results_m0$est + coef(m0$gam)[1] #This is how I adjust to TWS units
 
 
-results_m1 <- gratia::smooth_estimates(m1)
+results_m2 <- gratia::smooth_estimates(m2)
 
-results_m1$adj_est <- results_m1$est + coef(m1$gam)[1] #This is how I adjust to TWS units
+results_m2$adj_est <- results_m2$est + coef(m2$gam)[1] #This is how I adjust to TWS units
 
 DOYxBlock_m0 <- results_m0 %>% # not sigificant in the model
   filter(smooth == "te(DOY,Block)") %>%
@@ -157,7 +157,7 @@ DOYxTrt_m0 <- results_m0 %>%
   theme(legend.title=element_blank())
 
 
-DOYxBlock_m1 <- results_m1 %>% # not sigificant in the model
+DOYxBlock_m1 <- results_m2 %>% # not sigificant in the model
   filter(smooth == "te(DOY,Block)") %>%
   ggplot(aes(x=DOY)) + geom_ribbon(aes(ymin=adj_est-se, ymax=adj_est+se,fill=Block),alpha=.2) +
   geom_line(aes(y = adj_est,color=Block),size=1) + theme_pubr() +
@@ -165,7 +165,7 @@ DOYxBlock_m1 <- results_m1 %>% # not sigificant in the model
   scale_color_met_d(name="Demuth") +
   scale_fill_met_d(name="Demuth")
 
-DOYxTrt_m1 <- results_m1 %>%
+DOYxTrt_m1 <- results_m2 %>%
   mutate(Trt = case_when(
     Trt == "C" ~ "Cover",
     Trt == "NC" ~ "Noncover")) %>%
@@ -185,7 +185,7 @@ DOYxTrt_m1 <- results_m1 %>%
 
 m0_results <- (DOYxBlock_m0) / (DOYxTrt_m0)
 
-m1_results <- (DOYxBlock_m1) / (DOYxTrt_m1) # I nean the models dont change THAT much....but whatever
+m2_results <- (DOYxBlock_m1) / (DOYxTrt_m1) # I nean the models dont change THAT much....but whatever
 
 
 #Now the traditional approach
