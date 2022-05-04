@@ -1,49 +1,50 @@
-# README file for Cara et al. soil moisture GAM modeling paper
+## README file for Mathers et al. soil moisture modeling paper
 
 This README.md file was generated on 2022-02-14 by Douglas Lawton
 
 GENERAL INFORMATION
 
-1. Title of Dataset: Soil moisture analysis beween cover and non cover plots in North Carolina
+1. Title of Data set: 
 
-2. Author Information
-	Principal Investigator Contact Information
-	Name: Cara Mathers
-	Institution: NC State University
-	Email: cmather@ncsu.edu
+    Soil moisture analysis between cover and non cover plots in North Carolina
+
+2. Author Information  
+
+	Principal Investigator Contact Information  
+	Name: Cara Mathers  
+	Institution: NC State University  
+	Email: cmather@ncsu.edu  
+
+	Associate or Co-investigator Contact Information  
+	Name: Douglas Lawton  
+	Institution: NC State Universiy  
+	Email: ddlawton@ncsu.edu  
 
 
+3. Date of data collection (single date, range, approximate date):  
 
-	Associate or Co-investigator Contact Information
-	Name: Douglas Lawton
-	Institution: NC State Universiy
-	Email: ddlawton@ncsu.edu
+    2020-05-31 through 2021-09-31 (approximate)  
 
+4. Geographic location of data collection: 
 
-3. Date of data collection (single date, range, approximate date) <suggested format YYYY-MM-DD>:
-
-2020-05-31 through 2021-09-31 (approximate)
-
-4. Geographic location of data collection <latitude, longitude, or city/region, State, Country, as appropriate>: 
-
-Sandhills Research Station
-2148 Windblow Rd, Jackson Springs, NC 27281
+    Sandhills Research Station
+    2148 Windblow Rd, Jackson Springs, NC 27281
 
 
 SHARING/ACCESS INFORMATION
 
 1. Licenses/restrictions placed on the data: 
 
-Creative Commons Attribution 4.0 
+    Creative Commons Attribution 4.0 
 
 2. Links to publications that cite or use the data: 
 
-TBA
+    TBA
 
 
 6. Recommended citation for this dataset: 
 
-Mathers C., Lawton D., Huseth A., Suchoff D., and Woodley A. (2021). Soil moisture analysis between cover and non cover plots in North Carolina [Data set].
+    Mathers C., Lawton D., Huseth A., Suchoff D., and Woodley A. (2021). Soil moisture analysis between cover and non cover plots in North Carolina [Data set].
 
 
 DATA & FILE OVERVIEW
@@ -76,11 +77,11 @@ DATA-SPECIFIC INFORMATION FOR: [combined_Dec282021.csv]
 
 1. Number of variables: 
 
-19 
+    19 
 
 2. Number of cases/rows: 
 
-404294
+    404294
 
 3. Variable List: 
 
@@ -105,6 +106,6 @@ DATA-SPECIFIC INFORMATION FOR: [combined_Dec282021.csv]
 
 4. Missing data: 
 
-Some soil sensors failed to record throughout the season and is denoted by NA in the dataset.
+    Some soil sensors failed to record throughout the season and is denoted by NA in the dataset.
 
 
