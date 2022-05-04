@@ -1,4 +1,4 @@
-# README file for Cara et al. soil moisture GAM modeling paper
+# README file for Mathers et al. soil moisture GAM modeling paper
 
 This README.md file was generated on 2022-02-14 by Douglas Lawton
 
@@ -18,11 +18,11 @@ GENERAL INFORMATION
 		Email: ddlawton@ncsu.edu
 
 
-3. Date of data collection (single date, range, approximate date) <suggested format YYYY-MM-DD>:
+3. Date of data collection (single date, range, approximate date):
 
 2020-05-31 through 2021-09-31 (approximate)
 
-4. Geographic location of data collection <latitude, longitude, or city/region, State, Country, as appropriate>: 
+4. Geographic location of data collection: 
 
 Sandhills Research Station
 2148 Windblow Rd, Jackson Springs, NC 27281
@@ -70,8 +70,7 @@ File List:
 ```
 
 
-DATA-SPECIFIC INFORMATION FOR: [FILENAME]
-<repeat this section for each dataset, folder or file, as appropriate>
+DATA-SPECIFIC INFORMATION FOR: combined_Dec282021.csv
 
 1. Number of variables: 
 
