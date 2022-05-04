@@ -8,9 +8,11 @@ GENERAL INFORMATION
 
 2. Author Information
 	+  Principal Investigator Contact Information
-	+  Name: Cara Mathers
-	+  Institution: NC State University
-	+  Email: cmather@ncsu.edu
+	Name: Cara Mathers
+	Institution: NC State University
+	Email: cmather@ncsu.edu
+
+
 
 	+ Associate or Co-investigator Contact Information
 	+  Name: Douglas Lawton
