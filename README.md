@@ -7,20 +7,20 @@ GENERAL INFORMATION
 1. Title of Dataset: Soil moisture analysis beween cover and non cover plots in North Carolina
 
 2. Author Information
-	+ Principal Investigator Contact Information
-		Name: Cara Mathers
-		Institution: NC State University
-		Email: cmather@ncsu.edu
+	+  Principal Investigator Contact Information
+	+  Name: Cara Mathers
+	+  Institution: NC State University
+	+  Email: cmather@ncsu.edu
 
 	+ Associate or Co-investigator Contact Information
-		Name: Douglas Lawton
-		Institution: NC State Universiy
-		Email: ddlawton@ncsu.edu
+	+  Name: Douglas Lawton
+	+  Institution: NC State Universiy
+	+  Email: ddlawton@ncsu.edu
 
 
 3. Date of data collection (single date, range, approximate date) <suggested format YYYY-MM-DD>:
 
-+2020-05-31 through 2021-09-31 (approximate)
++  2020-05-31 through 2021-09-31 (approximate)
 
 4. Geographic location of data collection <latitude, longitude, or city/region, State, Country, as appropriate>: 
 
