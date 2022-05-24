@@ -251,7 +251,7 @@ dat_2021_dry <- dat_2021_dry %>%
 
 lme_simple_fit <- lme(mean~ Trt,random=~1 + DOY | block_trt,data=dat_2021_dry,correlation=corCAR1(value=0.2,form=~DOY|block_trt)) # This is the exact same correlational structure as in the GAMs
 
-performance::check_model(lme_simple_fit) #It could definitely be better....but I think it gets the point across.
+
 
 
 plot(lme_simple_fit)
@@ -260,9 +260,18 @@ pacf(resid(lme_simple_fit,type="normalized"))
 
 summary(lme_simple_fit)
 
-MuMIn::r.squaredGLMM(lme_simple_fit) #just to get that R-square
+ #just to get that adj, R-square for both models
 
+#linear model
+MuMIn::r.squaredGLMM(lme_simple_fit)[,2]
+
+(1 - ((1-0.08896627)*(nobs(lme_simple_fit)-1)/(nobs(lme_simple_fit)-length(lme_simple_fit$coefficients)-1))) #adjusting the R-square
+
+#GAM
 summary(m1$gam)$r.sq # A big increase in R^2
+
+
+#Now extracting est. marginal means for the linear model.
 
 emeans <- emmeans(lme_simple_fit, pairwise ~ Trt)
 emeans_df <- emeans$emmeans %>% as.data.frame()
